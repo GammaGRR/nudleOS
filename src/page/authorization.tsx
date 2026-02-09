@@ -1,4 +1,5 @@
 import { Logo } from '../lib/components/logo'
+import { InfoBlock } from '../lib/components/infoBlock'
 
 export const AuthorizationPage = () => {
     return (
@@ -7,6 +8,10 @@ export const AuthorizationPage = () => {
 
             <section className='brightness-100'>
                 <Logo />
+            </section>
+
+            <section className='brightness-100'>
+                <InfoBlock />
             </section>
         </main>
     )
