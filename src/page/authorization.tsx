@@ -1,5 +1,6 @@
 import { Logo } from '../lib/components/logo'
 import { InfoBlock } from '../lib/components/infoBlock'
+import { Login } from '../lib/components/login'
 
 export const AuthorizationPage = () => {
     return (
@@ -10,11 +11,16 @@ export const AuthorizationPage = () => {
                 <Logo />
             </section>
 
-            <div className="absolute inset-0 z-10 flex items-center pointer-events-none mx-5">
+            <div className="absolute inset-0 z-10 flex items-center pointer-events-none mx-5 justify-between">
                 <div className="pointer-events-auto">
                     <InfoBlock />
                 </div>
+                <div>
+                    <Login />
+                </div>
             </div>
+
+            
         </main>
     )
 }
