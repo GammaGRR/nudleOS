@@ -1,11 +1,12 @@
-
-
-
 export const HeadInf = () => {
     return(
         <section>
-            <h1 className='text-5xl text-white max-w-150 font-bold leading-15 py-4'>Управляйте своим сервером из любой точки мира</h1>
-            <p className='text-gray-400 text-lg'>Полноценная графическая среда в вашем браузере</p>
+            <h1 className='text-3xl lg:text-5xl text-white max-w-xl font-bold leading-tight py-4'>
+                Управляйте своим сервером из любой точки мира
+            </h1>
+            <p className='text-gray-400 text-base lg:text-lg'>
+                Полноценная графическая среда в вашем браузере
+            </p>
         </section>
     )
 }
