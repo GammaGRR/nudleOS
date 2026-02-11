@@ -9,8 +9,8 @@ export const AuthorizationPage = () => {
             <div className="relative z-20">
                 <Logo />
             </div>
-            <div className="relative z-20 flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10 px-6 lg:px-16 h-screen">
-                <div className="hidden lg:block max-w-xl">
+            <div className="relative z-20 flex flex-col items-center justify-center h-screen lg:flex-row lg:justify-between lg:px-16">
+                <div className="hidden lg:block">
                     <InfoBlock />
                 </div>
                 <div className="w-full max-w-md">
