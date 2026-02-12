@@ -1,5 +1,5 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 .hero-pattern {
-    background-image: url('../src/assets/mountains.png');
+  background-image: url('../src/assets/mountains.png');
 }

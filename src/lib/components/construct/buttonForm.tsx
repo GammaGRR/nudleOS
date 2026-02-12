@@ -1,9 +1,3 @@
-
-
 export const ButtonForm = () => {
-    return(
-        <section>
-            
-        </section>
-    )
-}
+  return <section></section>;
+};

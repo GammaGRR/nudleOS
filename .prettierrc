@@ -3,5 +3,6 @@
   "useTabs": false,
   "bracketSameLine": true,
   "singleQuote": true,
-  "semi": true
+  "semi": true,
+  "editor.formatOnSave": true
 }
