@@ -13,29 +13,11 @@ export const AuthorizationPage = () => {
           <div className="">
             <Logo />
           </div>
-          <div
-            className="
-                        flex flex-1 flex-col
-                        justify-center
-                        gap-10
-                        py-10
-                        lg:flex-row
-                        lg:items-center
-                        lg:justify-between
-                        lg:gap-16
-                    ">
+          <div className="flex flex-1 flex-col justify-center gap-10 py-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
             <div className="hidden lg:flex lg:flex-1">
               <InfoBlock />
             </div>
-            <div
-              className="
-                            w-full
-                            max-w-md
-                            mx-auto
-                            sm:max-w-lg
-                            lg:mx-0
-                            lg:flex-shrink-0
-                        ">
+            <div className="w-full max-w-md mx-auto sm:max-w-lg lg:mx-0 lg:flex-shrink-0">
               <Login />
             </div>
           </div>
