@@ -28,10 +28,10 @@ export const Login = () => {
                         Назад к выбору
                     </button>
                 )}
-                <h1 className="text-2xl font-semibold mb-1">
+                <h1 className="text-2xl font-semibold mb-1 text-center">
                     Вход в систему
                 </h1>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm text-center">
                     Выберите способ авторизации
                 </p>
             </div>
