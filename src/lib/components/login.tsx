@@ -4,7 +4,25 @@ import logo from '/miniLogonudle.svg';
 
 export const Login = () => {
   const [mode, setMode] = useState<'select' | 'email'>('select');
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!login || !password) {
+      setError('Пожалуйста, заполните все поля');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Неверный email или пароль');
+      return;
+    }
+  };
 
   return (
     <section className="w-full rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 text-white">
@@ -24,10 +42,11 @@ export const Login = () => {
           Выберите способ авторизации
         </p>
       </div>
+
       {mode === 'select' && (
         <div className="space-y-3">
           <button className="w-full h-12 rounded-xl bg-white/10 hover:bg-white/20 transition flex items-center justify-center gap-2">
-            <img src={logo} alt="" className="w-4 h-4" />
+            <img src={logo} alt="logo" className="w-4 h-4" />
             Продолжить с nudle
           </button>
           <button
@@ -44,25 +63,31 @@ export const Login = () => {
           </div>
         </div>
       )}
+
       {mode === 'email' && (
-        <div className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="text-sm text-gray-400">Email адрес</label>
-
             <div className="flex items-center gap-2 border-b border-white/20 py-2">
               <Mail className="w-4 h-4 text-gray-400" />
               <input
+                type="email"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
                 className="bg-transparent outline-none w-full text-sm"
                 placeholder="name@example.com"
               />
             </div>
           </div>
+
           <div>
             <label className="text-sm text-gray-400">Пароль</label>
             <div className="flex items-center gap-2 border-b border-white/20 py-2">
               <Lock className="w-4 h-4 text-gray-400" />
               <input
                 type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="bg-transparent outline-none w-full text-sm"
                 placeholder="Введите пароль"
               />
@@ -78,16 +103,20 @@ export const Login = () => {
               </button>
             </div>
           </div>
-          <button className="w-full h-12 rounded-xl bg-white/20 hover:bg-white/30 transition font-medium">
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+          <button
+            type="submit"
+            className="w-full h-12 rounded-xl bg-white/20 hover:bg-white/30 transition font-medium">
             Войти в систему →
           </button>
+
           <p className="text-center text-sm text-gray-400">
             Нет аккаунта?
             <span className="text-white ml-1 cursor-pointer underline">
               Зарегистрироваться
             </span>
           </p>
-        </div>
+        </form>
       )}
     </section>
   );
