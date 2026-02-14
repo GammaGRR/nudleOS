@@ -35,10 +35,10 @@ export const Login = () => {
             Назад к выбору
           </button>
         )}
-        <h1 className="text-2xl font-semibold mb-1 text-center">
+        <h1 className="font-semibold mb-1 text-center text-[clamp(1.3rem,3vw,1.6rem)]">
           Вход в систему
         </h1>
-        <p className="text-gray-400 text-sm text-center">
+        <p className="text-gray-400 text-center text-[clamp(0.8rem,2vw,0.9rem)]">
           Выберите способ авторизации
         </p>
       </div>
