@@ -20,9 +20,22 @@
   background: linear-gradient(135deg, #6366f1, #a855f7);
   color: gray;
 }
-.react-calendar__navigation button {
-  background: transparent !important;
-  color: white !important;
+.react-calendar__navigation button:first-child {
+  border-radius: 10px 0 0 10px;
+}
+.react-calendar__navigation button:last-child {
+  border-radius: 0 10px 10px 0;
+}
+.react-calendar .react-calendar__navigation button:enabled:hover,
+.react-calendar .react-calendar__navigation button:enabled:focus {
+  background: none;
+}
+.react-calendar__month-view__days__day {
+  background: transparent;
+}
+.react-calendar .react-calendar__navigation button:hover {
+  background-color: rgba(16, 16, 16, 0.422) !important;
+  transition: 0.4s;
 }
 .custom-scroll::-webkit-scrollbar {
   width: 6px;
