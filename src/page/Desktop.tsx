@@ -1,3 +1,9 @@
+import { Header } from '../lib/header';
+
 export const Desktop = () => {
-  return <></>;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 };

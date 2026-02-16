@@ -1,12 +1,12 @@
-import { AuthorizationPage } from './page/authorization';
+// import { AuthorizationPage } from './page/authorization';
 import { Desktop } from './page/Desktop';
-import './App.css';
+import './global.css';
 
 export const App = () => {
   return (
     <>
-      <AuthorizationPage />
-      {/* <Desktop /> */}
+      {/* <AuthorizationPage /> */}
+      <Desktop />
     </>
   );
 };
