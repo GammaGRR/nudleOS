@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search } from 'lucide-react';
 import { appsConfig } from './startMenu.config';
 import LogoMenu from '/miniLogonudle.svg';
+import '../../../global.css';
 
 export const StartMenu = () => {
   const [open, setOpen] = useState(false);
