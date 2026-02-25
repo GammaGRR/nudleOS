@@ -1,1 +1,18 @@
 /node_modules
+*/node_modules
+/dist
+/.env
+/coverage
+/.vscode
+.DS_Store
+*.log
+*.tsbuildinfo
+# Ignore IDE specific files
+.idea/
+*.sublime-project
+*.sublime-workspace
+# Ignore OS specific files
+Thumbs.db
+Desktop.ini
+# Ignore build artifacts
+/build

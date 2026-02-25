@@ -8,6 +8,11 @@ import {
   FolderIcon,
 } from '../lib/Desktop/DesktopIcon';
 
+type DesktopItem = {
+  name: string;
+  type: 'file' | 'folder';
+};
+
 export const Desktop = () => {
   const [contextMenu, setContextMenu] = useState<{
     x: number;
@@ -15,7 +20,7 @@ export const Desktop = () => {
   } | null>(null);
 
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
-
+  const [desktopItems, setDesktopItems] = useState<DesktopItem[]>([]);
   const [isSelecting, setIsSelecting] = useState(false);
   const [selectionStart, setSelectionStart] = useState<{
     x: number;
@@ -29,13 +34,23 @@ export const Desktop = () => {
   const desktopRef = useRef<HTMLDivElement>(null);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const desktopItems = [
-    { icon: <FileTextIcon />, label: 'README.txt' },
-    { icon: <CodeFileIcon />, label: 'server.js' },
-    { icon: <ImageFileIcon />, label: 'screenshot.png' },
-    { icon: <VideoFileIcon />, label: 'demo.mp4' },
-    { icon: <FolderIcon />, label: 'Projects' },
-  ];
+  useEffect(() => {
+    fetch('http://localhost:3001/api/files')
+      .then((res) => res.json())
+      .then((data) => setDesktopItems(data))
+      .catch((err) => console.error('Failed to fetch files:', err));
+  }, []);
+
+  const getIcon = (file: DesktopItem) => {
+    if (file.type === 'folder') return <FolderIcon />;
+
+    if (file.name.endsWith('.txt')) return <FileTextIcon />;
+    if (file.name.endsWith('.js')) return <CodeFileIcon />;
+    if (file.name.endsWith('.png')) return <ImageFileIcon />;
+    if (file.name.endsWith('.mp4')) return <VideoFileIcon />;
+
+    return <FileTextIcon />;
+  };
 
   useEffect(() => {
     const handleMouseUp = () => {
@@ -70,17 +85,14 @@ export const Desktop = () => {
     };
 
     window.addEventListener('mouseup', handleMouseUp);
-
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
+    return () => window.removeEventListener('mouseup', handleMouseUp);
   }, [isSelecting, selectionStart, selectionEnd]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!desktopRef.current?.contains(e.target as Node)) return;
-
     if ((e.target as HTMLElement).closest('.desktop-icon')) return;
 
+    setContextMenu(null);
     setSelectedIndexes([]);
     setIsSelecting(true);
     setSelectionStart({ x: e.clientX, y: e.clientY });
@@ -89,7 +101,6 @@ export const Desktop = () => {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isSelecting) return;
-
     setSelectionEnd({ x: e.clientX, y: e.clientY });
   };
 
@@ -153,7 +164,7 @@ export const Desktop = () => {
         <div className="flex flex-col gap-2">
           {desktopItems.map((item, index) => (
             <div
-              key={index}
+              key={item.name}
               ref={(el) => {
                 iconRefs.current[index] = el;
               }}
@@ -168,10 +179,10 @@ export const Desktop = () => {
                 setSelectedIndexes([index]);
               }}>
               <div className="flex items-center justify-center w-11 h-11">
-                {item.icon}
+                {getIcon(item)}
               </div>
               <span className="text-[13px] text-slate-200 text-center break-all max-w-[72px]">
-                {item.label}
+                {item.name}
               </span>
             </div>
           ))}
