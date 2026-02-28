@@ -2,11 +2,15 @@ import { StartMenu } from './components/construct/MenuButton';
 import { DateTimeBlock } from './components/construct/DateTimeBlock';
 import { LogOutBlock } from './components/construct/LogOut';
 
-export const Header = () => {
+type Props = {
+  onLaunch: (appId: string) => void;
+};
+
+export const Header = ({ onLaunch }: Props) => {
   return (
     <header className="flex items-center justify-between px-4 h-14 bg-[#0f172a] border-b border-white/10">
       <div className="flex items-center gap-2">
-        <StartMenu />
+        <StartMenu onLaunch={onLaunch} />
         <div className="h-10 w-[1px] bg-gray-600" />
       </div>
       <div className="flex items-center gap-1">
